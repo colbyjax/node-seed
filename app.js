@@ -1,9 +1,9 @@
 var express = require('express');
 var bodyParser = require('body-parser');
 var bunyan = require('bunyan');
-var api = require('./routes/index');
+var api = require('./routes/rest-api');
 var db = require('./models/db');
-var seed = require('./models/seed');
+var book = require('./models/book');
 
 var app = express();
 var log = bunyan.createLogger({name: 'bc'});
@@ -50,6 +50,6 @@ app.use(function(err, req, res, next) {
 // START THE SERVER
 // =======================================================================
 app.listen(port);
-log.info('Welcome to the Thunderdome: ' + port);
+log.info('Cyberdyne Systems Online.  Activating Skynet Self-Awareness protocols on port:' + port);
 
 module.exports = app;
