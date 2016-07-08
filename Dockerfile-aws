@@ -1,0 +1,13 @@
+# Dockerfile used for Amazon AWS ECS deploys.  Main difference is AWS doesn't
+# support a seperate code base volume.
+
+FROM node:4-onbuild
+
+# Format: MAINTAINER Name <email@addr.ess>
+MAINTAINER M.Y. Name <colbyjax@zoho.com>
+
+EXPOSE 4000
+
+# To build and run...
+#$ docker build -f Dockerfile-aws -t my-nodejs-app .
+#$ docker run -it --rm --name my-running-app my-nodejs-app

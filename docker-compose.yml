@@ -1,0 +1,16 @@
+## Builds two new containers that contain 'rest-api' and 'db' that are linked
+## Run docker-compose up
+
+version: '2'
+services:
+  rest-api:
+    build: .
+    ports:
+      - "4000:4000"
+    volumes:
+      - .:/code
+    depends_on:
+      - db
+  # Define the image that your database is using
+  db:
+    image: colbyjax/mongo-simple
