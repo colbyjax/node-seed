@@ -3,7 +3,10 @@ var express = require('express'),
     router = express.Router(),
     mongoose = require('mongoose'),
     bodyParser = require('body-parser'),
-    bunyan = require('bunyan');
+    bunyan = require('bunyan'),
+    fs = require('fs'),
+    seed = require('../models/seed.json');
+
 
 // Configure the app to use body parser
 router.use(bodyParser.urlencoded({ extended: true }));
@@ -25,6 +28,36 @@ router.get('/test', function(req, res) {
     res.json({ message: "Skynet Self-Aware, dispatching T-800" });
 });
 
+// Route that will seed the database with some sample database
+router.get('/seed', function(req, res) {
+  //console.log(JSON.stringify(seed));
+  seed.forEach(function(book){
+    mongoose.model('Book').create({
+        title : book.title,
+        author : book.author,
+        year : book.year,
+        summary : book.summary
+    }, function (err, foo) {
+        if(err) {
+          console.log("Problem adding book: " + book.title);
+        } else {
+          console.log("Added Book: " + book.title);
+        }
+    });
+  })
+  res.json('Seed Completed');
+});
+
+router.get('/clear', function(req,res) {
+  mongoose.model('Book').remove({}, function(err, foo){
+    if(err) {
+      res.json({ error: "There was a problem clearing the Collection"});
+    } else {
+      log.info('Collection Cleared');
+      res.json({ message: "Collection cleared"});
+    }
+  })
+})
 
 /* ALL THE CRUD OPERATIONS */
 
