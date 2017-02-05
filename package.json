@@ -1,8 +1,8 @@
 {
   "name": "node-seed",
   "main": "app.js",
-  "scripts":{
-    "start":"node app.js"
+  "scripts": {
+    "start": "node app.js"
   },
   "dependencies": {
     "body-parser": "^1.15.2",
@@ -10,6 +10,14 @@
     "jsonwebtoken": "^7.0.1",
     "mongoose": "^4.5.1",
     "morgan": "^1.7.0",
-    "bunyan":"*"
+    "bunyan": "*"
+  },
+  "devDependencies": {
+    "gulp": "^3.9.1",
+    "gulp-beautify": "^2.0.1",
+    "gulp-jshint": "^2.0.4",
+    "gulp-uglify": "^2.0.1",
+    "jsbeautify": "^0.3.6",
+    "jshint": "^2.9.4"
   }
 }

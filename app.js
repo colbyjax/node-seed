@@ -6,11 +6,15 @@ var db = require('./models/db');
 var book = require('./models/book');
 
 var app = express();
-var log = bunyan.createLogger({name: 'bc'});
+var log = bunyan.createLogger({
+  name: 'bc'
+});
 var port = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.urlencoded({
+  extended: false
+}));
 
 app.use('/api', api);
 
