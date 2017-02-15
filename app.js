@@ -1,14 +1,11 @@
+/* Code adapted from the outstanding examples at scotch.io
+ * https://scotch.io/tutorials/test-a-node-restful-api-with-mocha-and-chai
+ */
 var express = require('express');
 var bodyParser = require('body-parser');
-var bunyan = require('bunyan');
 var api = require('./routes/rest-api');
 var db = require('./models/db');
-var book = require('./models/book');
-
 var app = express();
-var log = bunyan.createLogger({
-  name: 'bc'
-});
 var port = process.env.PORT || 4000;
 
 app.use(bodyParser.json());
@@ -54,6 +51,6 @@ app.use(function(err, req, res, next) {
 // START THE SERVER
 // =======================================================================
 app.listen(port);
-log.info('Cyberdyne Systems Online.  Activating Skynet Self-Awareness protocols on port:' + port);
+console.log('Cyberdyne Systems Online.  Activating Skynet Self-Awareness protocols on port:' + port);
 
 module.exports = app;
