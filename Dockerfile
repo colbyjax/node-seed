@@ -11,4 +11,4 @@ EXPOSE 4000
 
 # To build and run...
 #$ docker build -t my-nodejs-app .
-#$ docker run -it --rm --name my-running-app my-nodejs-app
+#$ docker run -it -p 4000:4000 --rm --name my-running-app my-nodejs-app
